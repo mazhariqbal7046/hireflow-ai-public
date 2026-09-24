@@ -1,0 +1,44 @@
+{
+  "name": "ATS - Application Received Email",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "ats-application",
+        "responseMode": "onReceived",
+        "options": {}
+      },
+      "id": "ats-application-webhook",
+      "name": "Application Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [240, 300],
+      "webhookId": "ats-application"
+    },
+    {
+      "parameters": {
+        "resource": "message",
+        "operation": "send",
+        "sendTo": "={{ $json.body.candidate_email }}",
+        "subject": "=Application Received - {{ $json.body.job_title }}",
+        "emailType": "html",
+        "message": "=<h2>Application Received</h2>\n<p>Hello {{ $json.body.candidate_name }},</p>\n<p>Thank you for applying for the <strong>{{ $json.body.job_title }}</strong> position.</p>\n<p>Your application has been received successfully.</p>\n<p>Our recruitment team will review your application and contact you if there are any further updates.</p>\n<p>Best regards,<br>Recruitment Team</p>",
+        "options": {}
+      },
+      "id": "ats-application-gmail",
+      "name": "Send Application Email",
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.1,
+      "position": [500, 300]
+    }
+  ],
+  "connections": {
+    "Application Webhook": {
+      "main": [[{"node": "Send Application Email", "type": "main", "index": 0}]]
+    }
+  },
+  "settings": {"executionOrder": "v1"},
+  "pinData": {},
+  "active": false
+}
+
