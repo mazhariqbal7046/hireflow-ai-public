@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HireFlow AI | Recruitment Portal</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23071a38'/%3E%3Cpath d='M18 16v32M46 16v32M18 32h28' stroke='%2318c6c6' stroke-width='8' stroke-linecap='round'/%3E%3C/svg%3E" />
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    body{background:radial-gradient(circle at 8% 8%,#d9fbf6 0,transparent 28%),radial-gradient(circle at 92% 18%,#ffe1eb 0,transparent 24%),#eef4fa}
+    .primary{background:linear-gradient(135deg,#087b9b,#7767e8);box-shadow:0 8px 18px rgba(8,123,155,.22)}
+    .job-card:nth-child(3n+1){border-top:4px solid #18c6c6}.job-card:nth-child(3n+2){border-top:4px solid #f26b8a}.job-card:nth-child(3n){border-top:4px solid #7767e8}
+    .job-card:nth-child(3n+1) .job-meta span{background:#e1fbf7}.job-card:nth-child(3n+2) .job-meta span{background:#fff0f4}.job-card:nth-child(3n) .job-meta span{background:#f0efff}
+    .status-shortlisted{background:#fff2d6;color:#986300}.status-rejected{background:#ffe5ea;color:#a52f4b}
+    .compact{width:auto;margin-top:0;padding:8px 12px;font-size:12px}
+  </style>
+</head>
+<body>
+  <div class="site-shell">
+    <aside class="sidebar">
+      <div class="brand"><span class="brand-mark">H</span><span>HireFlow AI</span></div>
+      <p class="brand-note">People &gt; Progress</p>
+      <nav id="nav" class="nav"></nav>
+      <div class="sidebar-footer"><span id="identity">Not signed in</span><button id="logoutBtn" class="link-button hidden">Log out</button></div>
+    </aside>
+    <main class="main">
+      <header class="topbar"><div class="search">⌕ <input id="searchInput" placeholder="Search jobs or keywords" /></div><span id="apiStatus" class="status-dot">API checking…</span></header>
+      <div id="toast" class="toast hidden"></div>
+      <section id="authView" class="auth-layout">
+        <div class="hero-copy"><p class="eyebrow">SMARTER HIRING. SIMPLER WORKFLOWS.</p><h1>Hire smarter with HireFlow AI.</h1><p>A modern recruitment platform connecting candidates, recruiters, and hiring teams through streamlined workflows and responsible AI-assisted CV summaries.</p></div>
+        <div class="auth-card"><div class="tabs"><button data-auth="login" class="tab active">Sign in</button><button data-auth="signup" class="tab">Create account</button></div>
+          <form id="authForm"><label id="nameLabel" class="hidden">Full name<input id="fullName" /></label><label id="phoneLabel" class="hidden">Phone<input id="phone" /></label><label>Email<input id="email" type="email" required /></label><label>Password<input id="password" type="password" required /></label><button class="primary" type="submit">Continue</button></form>
+        </div>
+      </section>
+      <section id="appView" class="hidden"><div class="welcome"><div><p class="eyebrow">YOUR WORKSPACE</p><h1 id="welcomeTitle">Welcome back</h1><p id="welcomeText">Your next opportunity is closer than you think.</p></div><button id="refreshBtn" class="secondary">Refresh data</button></div><div id="content"></div></section>
+    </main>
+  </div>
+  <script src="app.js?v=8"></script>
+</body>
+</html>
+
